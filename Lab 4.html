@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>INST327 - LAB4</title>
+    <style>
+        body {
+            font-family:  Calibri;
+            transition: background-color 0.15s;
+        }
+        .section {
+            border: dashed rgb(0, 0, 0);
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="page-title">INST327 - LAB4</h1>
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
+
+    <div class="section" id="alert-section">
+        <h2>Use To Alert Me</h2>
+        <form onsubmit="showAlert(event)">
+            <input type="text" id="name" placeholder="Enter your name" required>
+            <button type="submit">Alert Me</button>
+        </form>
+    </div>
+
+    <div class="section" id="color-section">
+        <h2>Press For Suprise</h2>
+        <button onclick="changeColor()">Change Color</button>
+    </div>
+
+    <div class="section" id="text-tester-section">
+        <h2>Text Tester</h2>
+        <form onsubmit="validateText(event)">
+            <input type="text" id="text" placeholder="Enter text to validate" required>
+            <button type="submit">Validate Text</button>
+        </form>
+    </div>
+
+    <div class="section" id="add-text-section">
+        <h2>Add Text</h2>
+        <button onclick="addText()">Add Text</button>
+    </div>
+
+    <script>
+        let isBlue = true;
+
+        function showAlert(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            alert(`Hi ${name}!`);
+        }
+
+        function changeColor() {
+            document.body.style.backgroundColor = isBlue ? 'red' : 'lime';
+            isBlue = !isBlue;
+        }
+
+        function validateText(event) {
+            event.preventDefault();
+            const text = document.getElementById('text').value;
+            const validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+            if (validation.test(text)) {
+                alert("Special character detected!");
+            } else {
+                alert("Text is valid.");
+            }
+        }
+
+        function addText() {
+            const title = document.getElementById('page-title');
+            title.textContent += " Add Text";
+        }
+    </script>
+</body>
+</html>
